@@ -1,0 +1,235 @@
+﻿@extends('layouts.redesign')
+
+@section('title', $blog->title . ' | Konichiwa')
+@section('meta_description', $blog->meta_description ?? Str::limit(strip_tags($blog->content), 160))
+@section('meta_keywords', $blog->meta_keywords ?? $blog->tags)
+
+@section('content')
+       @include('partials.redesign-breadcrumb', ['pageTitle' => 'Post Details', 'breadcrumbActive' => 'Blog'])
+
+    <!-- rts blog mlist area -->
+    <div class="rts-blog-list-area rts-section-gap">
+        <div class="container">
+            <div class="row g-5">
+                <!-- rts blo post area -->
+                <div class="col-xl-8 col-md-12 col-sm-12 col-12">
+                    <!-- single post -->
+                    <div class="blog-single-post-listing details mb--0">
+                        <div class="thumbnail">
+                            <img src="{{ $blog->image ? asset($blog->image) : asset('assets/images/blog/blog6.webp') }}"
+                                alt="{{ $blog->title }}" style="width: 100%; max-height: 450px; object-fit: cover;">
+                        </div>
+                        <div class="blog-listing-content">
+                            <div class="user-info">
+                                <div class="single">
+                                    <i class="far fa-user-circle"></i>
+                                    <span>by {{ $blog->author ?? 'Admin' }}</span>
+                                </div>
+                                <div class="single">
+                                    <i class="far fa-clock"></i>
+                                    <span>{{ $blog->created_at->format('d M, Y') }}</span>
+                                </div>
+                                <div class="single">
+                                    <i class="far fa-tags"></i>
+                                    <span>{{ $blog->category ?? 'Business' }}</span>
+                                </div>
+                            </div>
+                            <h3 class="title">{{ $blog->title }}</h3>
+
+                            <div class="blog-content-details">
+                                {!! $blog->content !!}
+                            </div>
+
+                            <div class="row align-items-center mt--30">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="details-tag">
+                                        <h6>Tags:</h6>
+                                        @if($blog->tags)
+                                            @foreach(explode(',', $blog->tags) as $tag)
+                                                @if(trim($tag) !== '')
+                                                    <span class="rd-tag">{{ trim($tag) }}</span>
+                                             @endif
+                                            @endforeach
+                                     @else
+                                            <span class="rd-tag">Services</span>
+                                            <span class="rd-tag">Business</span>
+                                     @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="details-share">
+                                <h6>Share:</h6>
+                                    @php
+                                    $plainUrl   = route('blog-details', $blog->slug);
+                                    $shareUrl   = rawurlencode($plainUrl);
+                                    $shareTitle = rawurlencode($blog->title);
+                                @endphp
+                                <a class="rd-share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                                <a class="rd-share-btn" href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&amp;text={{ $shareTitle }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                <a class="rd-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                                <a class="rd-share-btn" href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                <button type="button" class="rd-share-btn" data-copy-link="{{ $plainUrl }}" aria-label="Copy link" title="Copy link"><i class="fas fa-link" aria-hidden="true"></i></button>
+                                <span class="rd-share-status" role="status" aria-live="polite"></span>                                      
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Approved comments display --}}
+                            @if($comments->count() > 0)
+                            <div class="comments-area mt--50">
+                                <h4 class="title mb--30">{{ $comments->count() }} Comment{{ $comments->count() > 1 ? "s" : "" }}</h4>
+                                @foreach($comments as $comment)
+                                <div class="single-comment d-flex gap-4 mb--30 pb--30" style="border-bottom: 1px solid #f0f0f0;">
+                                    <div class="comment-avatar flex-shrink-0">
+                                        <div style="width: 50px; height: 50px; border-radius: 50%; background: #f26522; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 18px;">
+                                            {{ strtoupper(substr($comment->name, 0, 1)) }}
+                                        </div>
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="d-flex align-items-center gap-3 mb-2">
+                                            <h6 class="mb-0 fw-bold">{{ $comment->name }}</h6>
+                                            <span class="text-muted small"><i class="fal fa-clock me-1"></i>{{ $comment->created_at->format("d M, Y") }}</span>
+                                        </div>
+                                        {{-- Safe output: name and message use {{ }} (auto-escaped), never {!! !!} (Req 6.1, 6.3) --}}
+                                    <p class="mb-0 text-muted">{{ $comment->message }}</p>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
+
+                            {{-- Comment submission form --}}
+                            <div class="replay-area-details mt--50">
+                                <h4 class="title">Leave a Reply</h4>
+
+                                @if(session("comment_success"))
+                                    <div class="alert alert-success" style="border-radius: 10px; background: #ecfdf5; border: none; color: #065f46; padding: 15px 20px; margin-bottom: 20px;">
+                                        <i class="fal fa-check-circle me-2"></i> {{ session("comment_success") }}
+                                    </div>
+                                @endif
+
+                                <form action="{{ route("blog.comments.store", $blog) }}" method="POST">
+                                    @csrf
+                                    <div class="row g-4">
+                                        <div class="col-lg-6">
+                                            <input type="text" name="name" value="{{ old("name") }}"
+                                                placeholder="Your Name" class="form-control @error("name") is-invalid @enderror"
+                                                style="background: #f5f5f5; border: none; padding: 15px;">
+                                            @error("name") <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="email" name="email" value="{{ old("email") }}"
+                                                placeholder="Your Email" class="form-control @error("email") is-invalid @enderror"
+                                                style="background: #f5f5f5; border: none; padding: 15px;">
+                                            @error("email") <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea name="message" placeholder="Your Message"
+                                                class="form-control @error("message") is-invalid @enderror"
+                                                style="background: #f5f5f5; border: none; padding: 15px; height: 150px;">{{ old("message") }}</textarea>
+                                            @error("message") <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        </div>
+                                    </div>
+                                    {{-- Turnstile bot-detection widget (Req 1.1, 1.2) --}}
+                                    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+                                    <div class="cf-turnstile mt--20" data-sitekey="{{ config('services.turnstile.site_key') }}"></div>
+                                    @error('cf-turnstile-response')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+
+                                    {{-- Honeypot: bots fill this in; real users never see it (Req 5.3) --}}
+                                    <input type="text" name="website_url" value="" style="display:none;" tabindex="-1" autocomplete="off">
+
+                                    <button type="submit" class="rts-btn btn-primary mt--20">Submit Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- rts-blog post end area -->
+
+                <!--rts blog wizered area -->
+                <div class="col-xl-4 col-md-12 col-sm-12 col-12">
+                    {{-- Search widget hidden - not required --}}
+                    {{-- <div class="rts-single-wized search">
+                        <div class="wized-header">
+                            <h5 class="title">Search</h5>
+                        </div>
+                        <div class="wized-body">
+                            <form action="{{ route('blog-list') }}" method="GET">
+                                <div class="rts-search-wrapper">
+                                    <input class="Search" type="text" name="search" placeholder="Enter Keyword">
+                                    <button type="submit"><i class="fal fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div> --}}
+
+                    <div class="rts-single-wized Categories">
+                        <div class="wized-header">
+                            <h5 class="title">Categories</h5>
+                        </div>
+                        <div class="wized-body">
+                            <ul class="single-categories">
+                                @forelse($categories as $cat)
+                                    <li>
+                                        <a href="{{ route('blog-list', ['category' => $cat]) }}">
+                                            {{ $cat }} <i class="far fa-long-arrow-right"></i>
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li><span class="text-muted small">No categories yet.</span></li>
+                                @endforelse
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="rts-single-wized Recent-post">
+                        <div class="wized-header">
+                            <h5 class="title">Related Posts</h5>
+                        </div>
+                        <div class="wized-body">
+                            @forelse($relatedBlogs as $recent)
+                                <div class="recent-post-single">
+                                    <div class="thumbnail">
+                                        <a href="{{ route('blog-details', $recent->slug) }}"><img
+                                                src="{{ $recent->image ? asset($recent->image) : asset('assets/images/blog/blog6.webp') }}"
+                                                alt="Blog_post" style="width: 80px; height: 80px; object-fit: cover;"></a>
+                                    </div>
+                                    <div class="content-area">
+                                        <div class="user">
+                                            <i class="fal fa-clock"></i>
+                                            <span>{{ $recent->created_at->format('d M, Y') }}</span>
+                                        </div>
+                                        <a class="post-title" href="{{ route('blog-details', $recent->slug) }}">
+                                            <h6 class="title">{{ Str::limit($recent->title, 45) }}</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                            @empty
+                                <p class="text-muted small">No related posts found.</p>
+                            @endforelse
+                        </div>
+                    </div>
+
+                    <div class="rts-single-wized contact">
+                        <div class="wized-header d-flex justify-content-center">
+    <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa Chemicals" width="150" class="d-block mx-auto"></a>
+</div>
+                        <div class="wized-body text-center">
+                            <h5 class="title">Need Help? We Are Here To Help You</h5>
+                            <a class="rts-btn btn-primary" href="{{ route('contact')}}">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/redesign/css/share.css') }}">
+@endpush
+
+@push('scripts')
+<script src="{{ asset('assets/redesign/js/share.js') }}"></script>
+@endpush
+

@@ -1,0 +1,395 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Add Turnstile block to `config/services.php`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016556
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127026309
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127090001
+      }
+    ],
+    "1.2 Update `.env.example` with Turnstile placeholder entries": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016627
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127029993
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127094157
+      }
+    ],
+    "2.1 Create `App\\Rules\\MaxWords`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016695
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127037378
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127098629
+      }
+    ],
+    "2.2 Create `App\\Rules\\SafeCommentText`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016784
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127111515
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127550372
+      }
+    ],
+    "2.4 Create `App\\Rules\\Turnstile`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016856
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127566732
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127674706
+      }
+    ],
+    "3.1 Create `App\\Http\\Requests\\StoreCommentRequest`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016915
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127572046
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127679406
+      }
+    ],
+    "4.1 Refactor `BlogCommentController::store()` to use `StoreCommentRequest`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127016980
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127709345
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128413753
+      }
+    ],
+    "5.1 Create migration `alter_blog_comments_message_to_varchar_500`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017071
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127115668
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127555502
+      }
+    ],
+    "6.1 Confirm `BlogComment` has correct `$fillable` and no `$guarded = []`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017127
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127041594
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127103011
+      }
+    ],
+    "7.1 Create `App\\Http\\Middleware\\ContentSecurityPolicy`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017180
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127713281
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128418858
+      }
+    ],
+    "7.2 Register `ContentSecurityPolicy` in `bootstrap/app.php`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017241
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128435233
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128464865
+      }
+    ],
+    "8.1 Add `throttle:5,1` middleware to the comment store route": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017300
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127120333
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127560992
+      }
+    ],
+    "9.1 Add Turnstile widget, honeypot field, and error display to `blog-details.blade.php`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017383
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127751881
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128425249
+      }
+    ],
+    "10.1 Create `App\\Console\\Commands\\ScanComments`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017435
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127717603
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128430124
+      }
+    ],
+    "11. Checkpoint — verify rules, request, controller, and route work end-to-end": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017496
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128471903
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128763071
+      }
+    ],
+    "12.1 Create `tests/Feature/BlogCommentSecurityTest.php`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017555
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128767074
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134197196
+      }
+    ],
+    "13.1 Write `TURNSTILE_CHANGES.md` in project root": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017618
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134202550
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134290320
+      }
+    ],
+    "14. Final checkpoint — full test suite green": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127017672
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134296429
+      },
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134839119
+      }
+    ],
+    "1. Bootstrap configuration and environment": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127094237
+      }
+    ],
+    "6. Verify `BlogComment` model `$fillable`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127103080
+      }
+    ],
+    "5. Database migration": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127555593
+      }
+    ],
+    "8. Update route with rate limiting": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127561059
+      }
+    ],
+    "2. Implement custom Rule classes": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127674784
+      }
+    ],
+    "3. Implement `StoreCommentRequest` FormRequest": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791127679555
+      }
+    ],
+    "4. Update `BlogCommentController`": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128413881
+      }
+    ],
+    "9. Update Blade view": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128425319
+      }
+    ],
+    "10. Implement `ScanComments` Artisan command": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128430198
+      }
+    ],
+    "7. Implement `ContentSecurityPolicy` middleware": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791128464935
+      }
+    ],
+    "12. Write automated test suite": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134197261
+      }
+    ],
+    "13. Create `TURNSTILE_CHANGES.md` handover file": [
+      {
+        "executionId": "3013713e-791a-4565-9340-5e167df0706b",
+        "chatSessionId": "sess_2da0a681-075c-4b2b-88c4-869895caeaf1",
+        "timestamp": 1791134290402
+      }
+    ]
+  }
+}
