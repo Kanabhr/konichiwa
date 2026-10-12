@@ -163,3 +163,64 @@
         }
     };
 })();
+/* Farmer Success Stories: Load More / View Less (CSP-safe, replaces the old inline script) */
+(function () {
+    function initFarmerStories() {
+        var items   = document.querySelectorAll('.farmer-story-col');
+        var btnLoad = document.getElementById('btnLoadMoreStories');
+        var btnLess = document.getElementById('btnViewLessStories');
+        if (!items.length || !btnLoad) return;
+
+        var step = 4;          // cards per row / per click
+        var visible = step;
+
+        function render() {
+            items.forEach(function (el, i) {
+                if (i < visible) {
+                    el.style.removeProperty('display');
+                } else {
+                    el.style.setProperty('display', 'none', 'important');
+                }
+            });
+            if (visible >= items.length) {
+                btnLoad.style.setProperty('display', 'none', 'important');
+            } else {
+                btnLoad.style.removeProperty('display');
+            }
+            if (btnLess) {
+                if (visible > step) {
+                    btnLess.style.setProperty('display', 'inline-flex', 'important');
+                } else {
+                    btnLess.style.setProperty('display', 'none', 'important');
+                }
+            }
+        }
+
+        btnLoad.addEventListener('click', function (e) {
+            e.preventDefault();
+            visible += step;
+            render();
+        });
+
+        if (btnLess) {
+            btnLess.addEventListener('click', function (e) {
+                e.preventDefault();
+                visible = step;
+                render();
+                var sec = document.getElementById('farmer-stories-section');
+                if (sec) {
+                    var y = sec.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            });
+        }
+
+        render();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFarmerStories);
+    } else {
+        initFarmerStories();
+    }
+})();
