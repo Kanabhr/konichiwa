@@ -10,7 +10,7 @@ class FarmerStoryController extends Controller
 {
     public function index()
     {
-        $stories = FarmerStory::latest()->paginate(10);
+        $stories = FarmerStory::latest()->get();
         return view('admin.farmer-stories.index', compact('stories'));
     }
 

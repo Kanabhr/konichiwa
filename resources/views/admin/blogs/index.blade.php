@@ -1,20 +1,28 @@
 @extends('layouts.admin')
 
 @section('page-title', 'Blog Library')
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/redesign/vendor/datatables/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/redesign/css/admin-tables.css') }}">
+@endpush
+@push('scripts')
+<script src="{{ asset('assets/redesign/vendor/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/redesign/js/admin-datatables.js') }}"></script>
+@endpush
 
 @section('content')
 <div class="d-flex align-items-center justify-content-between mb-4">
     <div>
-        <p class="text-muted small mb-0">Total of {{ $blogs->total() }} articles published</p>
+        <p class="text-muted small mb-0">Total of {{ $blogs->count() }} articles published</p>
     </div>
     <a href="{{ route('admin.blogs.create') }}" class="btn btn-premium btn-premium-primary">
         <i class="fas fa-plus me-2"></i> Create New Article
     </a>
 </div>
 
-<div class="premium-card p-0 overflow-hidden shadow-sm">
+<div class="premium-card rd-dt-card p-0 overflow-hidden shadow-sm">
     <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0" style="border-collapse: collapse;">
+        <table id="blogsTable" class="table table-hover align-middle mb-0 rd-dt" data-rd-datatable data-rd-nosort="5" data-rd-order-col="4" data-rd-order-dir="desc" style="border-collapse: collapse;">
             <thead class="bg-light text-muted small text-uppercase">
                 <tr>
                     <th class="ps-4 py-3">Article</th>
@@ -54,10 +62,10 @@
                             </span>
                         @endif
                     </td>
-                    <td class="text-center">
+                    <td class="text-center" data-order="{{ (int) $blog->views }}">
                         <span class="fw-bold">{{ number_format($blog->views) }}</span>
                     </td>
-                    <td>
+                    <td data-order="{{ $blog->created_at->timestamp }}">
                         <div class="text-dark small fw-500">{{ $blog->created_at->format('M d, Y') }}</div>
                         <div class="text-muted small" style="font-size: 11px;">{{ $blog->created_at->format('h:i A') }}</div>
                     </td>
@@ -101,10 +109,6 @@
             </tbody>
         </table>
     </div>
-</div>
-
-<div class="mt-4">
-    {{ $blogs->links() }}
 </div>
 
 <style>

@@ -1,0 +1,29 @@
+/* Admin list tables (blogs, farmer stories): no ugly wrapping, tidy DataTables controls */
+table.rd-dt th,
+table.rd-dt td {
+    white-space: nowrap;
+}
+table.rd-dt td:first-child {
+    white-space: normal;
+    min-width: 260px;
+}
+table.rd-dt .badge-premium {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.rd-dt-card .dt-container .dt-layout-row {
+    padding: 12px 24px;
+    margin: 0;
+    align-items: center;
+}
+.rd-dt-card .dt-container .dt-search input,
+.rd-dt-card .dt-container .dt-length select {
+    border: 1px solid #6c757d;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+.rd-dt-card .dt-container .dt-info {
+    color: #5D666F;
+    font-size: 0.875rem;
+}

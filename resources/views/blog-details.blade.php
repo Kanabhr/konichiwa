@@ -211,14 +211,13 @@
                         </div>
                     </div>
 
-                    <div class="rts-single-wized contact">
-                        <div class="wized-header d-flex justify-content-center">
-    <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa Chemicals" width="150" class="d-block mx-auto"></a>
+                  <div class="rd-widget rd-widget-cta">
+    <a href="{{ route('home') }}" aria-label="Konichiwa Home">
+        <img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa Chemicals" width="150" height="56">
+    </a>
+    <h2 class="rd-widget-title">Need help? We are here to help you</h2>
+    <a class="rts-btn btn-primary" href="{{ route('contact') }}">Contact Us</a>
 </div>
-                        <div class="wized-body text-center">
-                            <h5 class="title">Need Help? We Are Here To Help You</h5>
-                            <a class="rts-btn btn-primary" href="{{ route('contact')}}">Contact Us</a>
-                        </div>
                     </div>
                 </div>
             </div>
