@@ -14,6 +14,7 @@ class FarmerStory extends Model
         'mobile_number',
         'suggested_product',
         'location',
+        'testimonial',
         'image',
         'is_active',
     ];

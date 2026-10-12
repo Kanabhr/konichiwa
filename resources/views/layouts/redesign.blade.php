@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Konichiwa | Leading Chemical Solutions')</title>
+    <title>...</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <meta name="description" content="@yield('meta_description', 'Konichiwa Chemicals provides premium agricultural chemical solutions for global markets.')">
     <meta name="keywords" content="@yield('meta_keywords', 'chemicals, agricultural solutions, konichiwa, farming, crop protection')">
     <meta name="author" content="Konichiwa">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow" @stack('meta')>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png') }}">
 
     {{--

@@ -51,18 +51,32 @@
                     @enderror
                 </div>
 
-               <div class="mb-0">
-    <label class="form-label fw-bold text-uppercase small text-muted">Testimonial (optional, max 300 characters)</label>
-    <textarea name="{{ old('testimonial', $farmerStory->testimonial) }}"
-              rows="4"
-              maxlength="300"
-              class="form-control border-0 bg-light p-3 @error('testimonial') is-invalid @enderror"
-              placeholder="The farmer's own words about the result they got"
-              style="border-radius: 12px;">{{ old('testimonial') }}</textarea>
-    @error('testimonial')
-        <div class="text-danger small mt-1">{{ $message }}</div>
-    @enderror
-</div>
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-uppercase small text-muted">Location (village / district, optional)</label>
+                    <input type="text"
+                           name="location"
+                           value="{{ old('location', $farmerStory->location) }}"
+                           class="form-control border-0 bg-light p-3 @error('location') is-invalid @enderror"
+                           placeholder="e.g. Kheda, Gujarat"
+                           maxlength="255"
+                           style="border-radius: 12px;">
+                    @error('location')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label fw-bold text-uppercase small text-muted">Testimonial (optional, max 300 characters)</label>
+                    <textarea name="testimonial"
+                              rows="4"
+                              maxlength="300"
+                              class="form-control border-0 bg-light p-3 @error('testimonial') is-invalid @enderror"
+                              placeholder="The farmer's own words about the result they got"
+                              style="border-radius: 12px;">{{ old('testimonial', $farmerStory->testimonial) }}</textarea>
+                    @error('testimonial')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
 
             </div>
         </div>

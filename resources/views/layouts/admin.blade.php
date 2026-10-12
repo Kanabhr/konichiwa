@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('page-title') | Konichiwa Admin</title>
-    
+   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <!-- Fonts -->
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -317,9 +320,8 @@
     <!-- End loader -->
 
     <aside class="admin-sidebar">
-        <div class="sidebar-brand">
-            <img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa">
-            <span class="ms-3 fw-bold fs-5">ADMIN</span>
+        <div class="sidebar-brand" style="display:flex; align-items:center; justify-content:center;">
+            <img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa" style="margin:0;">
         </div>
         
         <div class="sidebar-nav">

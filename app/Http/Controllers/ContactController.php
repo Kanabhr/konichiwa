@@ -48,13 +48,19 @@ class ContactController extends Controller
         $contactMessage = ContactMessage::create(Arr::except($validated, ['cf-turnstile-response']));
 
         // Send enquiry notification email.
-        // Wrapped in try/catch so a mail failure never loses the saved enquiry.
-        try {
-            Mail::to(config('mail.enquiry_to'))->send(new NewEnquiry($contactMessage));
-        } catch (\Throwable $e) {
-            Log::error('NewEnquiry mail failed: ' . $e->getMessage(), [
-                'contact_message_id' => $contactMessage->id,
-            ]);
+        // A mail problem must never lose the saved enquiry, so it is only logged.
+        $to = config('mail.enquiry_to');
+
+        if (! $to || str_contains($to, 'PLACEHOLDER')) {
+            Log::warning('ENQUIRY_TO_EMAIL is not configured; enquiry ' . $contactMessage->id . ' was saved but not emailed.');
+        } else {
+            try {
+                Mail::to($to)->send(new NewEnquiry($contactMessage));
+            } catch (\Throwable $e) {
+                Log::error('NewEnquiry mail failed: ' . $e->getMessage(), [
+                    'contact_message_id' => $contactMessage->id,
+                ]);
+            }
         }
 
         if ($request->ajax()) {

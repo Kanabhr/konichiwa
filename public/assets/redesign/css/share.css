@@ -41,3 +41,7 @@
 @media (max-width: 575px) {
     .details-share { justify-content: flex-start; margin-top: 12px; }
 }
+/* Stack tags and share row below the xxl breakpoint so six buttons never collide with the tags */
+@media (max-width: 1399px) {
+    .details-share { justify-content: flex-start; margin-top: 16px; }
+}
