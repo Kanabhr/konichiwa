@@ -1,27 +1,18 @@
 import InputError from '@/components/input-error';
-import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import AuthLayout from '@/layouts/auth-layout';
-import { register } from '@/routes';
+import AuthLayout from '@/layouts/auth/auth-branded-layout';
 import { store } from '@/routes/login';
-import { request } from '@/routes/password';
 import { Form, Head } from '@inertiajs/react';
 
 interface LoginProps {
     status?: string;
-    canResetPassword: boolean;
-    canRegister: boolean;
 }
 
-export default function Login({
-    status,
-    canResetPassword,
-    canRegister,
-}: LoginProps) {
+export default function Login({ status }: LoginProps) {
     return (
         <AuthLayout
             title="Log in to your account"
@@ -47,7 +38,8 @@ export default function Login({
                                     autoFocus
                                     tabIndex={1}
                                     autoComplete="email"
-                                    placeholder="email@example.com"
+                                    placeholder="you@company.com"
+                                    className="h-12 rounded-lg border-[#e5e1dd] bg-[#fcfbfa] px-4 focus-visible:ring-[#df0a0a]/30"
                                 />
                                 <InputError message={errors.email} />
                             </div>
@@ -55,15 +47,6 @@ export default function Login({
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    {canResetPassword && (
-                                        <TextLink
-                                            href={request()}
-                                            className="ml-auto text-sm"
-                                            tabIndex={5}
-                                        >
-                                            Forgot password?
-                                        </TextLink>
-                                    )}
                                 </div>
                                 <Input
                                     id="password"
@@ -72,7 +55,8 @@ export default function Login({
                                     required
                                     tabIndex={2}
                                     autoComplete="current-password"
-                                    placeholder="Password"
+                                    placeholder="Enter your password"
+                                    className="h-12 rounded-lg border-[#e5e1dd] bg-[#fcfbfa] px-4 focus-visible:ring-[#df0a0a]/30"
                                 />
                                 <InputError message={errors.password} />
                             </div>
@@ -82,13 +66,14 @@ export default function Login({
                                     id="remember"
                                     name="remember"
                                     tabIndex={3}
+                                    className="data-[state=checked]:border-[#df0a0a] data-[state=checked]:bg-[#df0a0a]"
                                 />
                                 <Label htmlFor="remember">Remember me</Label>
                             </div>
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="mt-2 h-12 w-full rounded-lg bg-[#df0a0a] text-white hover:bg-[#c90808]"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
@@ -97,15 +82,6 @@ export default function Login({
                                 Log in
                             </Button>
                         </div>
-
-                        {canRegister && (
-                            <div className="text-center text-sm text-muted-foreground">
-                                Don't have an account?{' '}
-                                <TextLink href={register()} tabIndex={5}>
-                                    Sign up
-                                </TextLink>
-                            </div>
-                        )}
                     </>
                 )}
             </Form>
