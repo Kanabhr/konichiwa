@@ -6,19 +6,6 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Attaches a Content-Security-Policy header to every response in the web
- * middleware group.
- *
- * External origins audited from resources/views/layouts/ (header, footer, app):
- * - All CSS/JS assets are served locally via asset() from /assets/
- * - Font Awesome is loaded locally (assets/css/plugins/fontawesome-5.css)
- * - Bootstrap, jQuery, Swiper, etc. are all local
- * - The ONLY external origin is https://challenges.cloudflare.com (Turnstile)
- *
- * This middleware emits ONLY Content-Security-Policy (enforcing mode).
- * Per Req 7.8, it MUST NOT emit both CSP and CSP-Report-Only on the same response.
- */
 class ContentSecurityPolicy
 {
     public function handle(Request $request, Closure $next): Response
@@ -26,50 +13,60 @@ class ContentSecurityPolicy
         /** @var Response $response */
         $response = $next($request);
 
-        // Set header after $next() so it is applied to all status codes
-        // (2xx, 3xx, 4xx, 5xx) — Req 7.1
-        $response->headers->set('Content-Security-Policy', $this->buildHeader());
+        $response->headers->set(
+            'Content-Security-Policy',
+            $this->isInertiaPage($response) ? $this->adminHeader() : $this->buildHeader()
+        );
 
         return $response;
     }
 
+    // Inertia (React admin/login) pages carry a data-page attribute or the X-Inertia header
+    private function isInertiaPage(Response $response): bool
+    {
+        if ($response->headers->has('X-Inertia')) {
+            return true;
+        }
+        $content = $response->getContent();
+        return is_string($content) && str_contains($content, 'data-page=');
+    }
+
+    // Looser policy ONLY for the logged-in admin app / auth screens
+    private function adminHeader(): string
+    {
+        $dev = file_exists(public_path('hot'))
+            ? ' http://localhost:5173 http://[::1]:5173 http://127.0.0.1:5173'
+            : '';
+        $devWs = $dev ? ' ws://localhost:5173 ws://[::1]:5173 ws://127.0.0.1:5173' : '';
+
+        return implode('; ', [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com{$dev}",
+            "style-src 'self' 'unsafe-inline' https://fonts.bunny.net{$dev}",
+            "font-src 'self' data: https://fonts.bunny.net",
+            "img-src 'self' data: blob:",
+            "frame-src 'self' https://challenges.cloudflare.com",
+            "connect-src 'self' https://challenges.cloudflare.com{$dev}{$devWs}",
+            "object-src 'none'",
+            "base-uri 'self'",
+            "form-action 'self'",
+        ]);
+    }
+
+    // Strict policy for the public website (unchanged)
     private function buildHeader(): string
     {
-        $directives = [
-            // All resources default to same-origin
+        return implode('; ', [
             "default-src 'self'",
-
-            // Scripts: self + Cloudflare Turnstile (Req 7.2)
             "script-src 'self' https://challenges.cloudflare.com",
-
-            // Styles: self + unsafe-inline (needed for inline styles used by
-            // the theme's JS animations and third-party widgets)
             "style-src 'self' 'unsafe-inline'",
-
-            // Fonts: self only (Font Awesome is served locally)
-            "font-src 'self' data: ",
-
-            // Images: self + data: URIs (used by some inline SVG/spinner patterns)
+            "font-src 'self' data:",
             "img-src 'self' data: https://qrcode.konichiwachemicals.com",
-
-            // Frames: Turnstile renders in an iframe (Req 7.3)
             "frame-src 'self' https://challenges.cloudflare.com https://www.google.com/maps/",
-
-            // Fetch/XHR: Turnstile makes connections to Cloudflare (Req 7.4)
             "connect-src 'self' https://challenges.cloudflare.com",
-
-            // Block plugins/Flash
             "object-src 'none'",
-
-            // Restrict base tag to same origin
             "base-uri 'self'",
-
-            // Only allow forms to submit to same origin
             "form-action 'self'",
-            // Allow product images 
-            
-        ];
-
-        return implode('; ', $directives);
+        ]);
     }
 }
