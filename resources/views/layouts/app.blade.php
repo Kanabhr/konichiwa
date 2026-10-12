@@ -13,7 +13,11 @@
     <meta name="robots" content="index, follow">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/fav.png') }}">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/fav.png') }}"> -->
+   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.min.css') }}">

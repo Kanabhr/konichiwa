@@ -64,10 +64,13 @@
                                     $shareUrl   = rawurlencode($plainUrl);
                                     $shareTitle = rawurlencode($blog->title);
                                 @endphp
-                                <a class="rd-share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                                <a class="rd-share-btn" href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&amp;text={{ $shareTitle }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                                <a class="rd-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                                <a class="rd-share-btn" href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                <a class="rd-share-btn" href="https://x.com/intent/post?url={{ $shareUrl }}&amp;text={{ $shareTitle }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="X">
+                                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                    </a>
+                                    <a class="rd-share-btn" href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                    <a class="rd-share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                                    <a class="rd-share-btn" href="https://www.reddit.com/submit?url={{ $shareUrl }}&amp;title={{ $shareTitle }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Reddit" title="Reddit"><i class="fab fa-reddit-alien" aria-hidden="true"></i></a>
+                                    <a class="rd-share-btn" href="mailto:?subject={{ $shareTitle }}&amp;body={{ $shareTitle }}%0A{{ $shareUrl }}" aria-label="Share by email" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                                 <button type="button" class="rd-share-btn" data-copy-link="{{ $plainUrl }}" aria-label="Copy link" title="Copy link"><i class="fas fa-link" aria-hidden="true"></i></button>
                                 <span class="rd-share-status" role="status" aria-live="polite"></span>                                      
                                     </div>
