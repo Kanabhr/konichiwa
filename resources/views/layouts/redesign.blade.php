@@ -13,7 +13,7 @@
     <meta name="description" content="@yield('meta_description', 'Konichiwa Chemicals provides premium agricultural chemical solutions for global markets.')">
     <meta name="keywords" content="@yield('meta_keywords', 'chemicals, agricultural solutions, konichiwa, farming, crop protection')">
     <meta name="author" content="Konichiwa">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow" @stack('meta')>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png') }}">
 
     {{--

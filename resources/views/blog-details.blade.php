@@ -3,7 +3,26 @@
 @section('title', $blog->title . ' | Konichiwa')
 @section('meta_description', $blog->meta_description ?? Str::limit(strip_tags($blog->content), 160))
 @section('meta_keywords', $blog->meta_keywords ?? $blog->tags)
-
+@push('meta')
+@php
+    $ogImage = $blog->image ? asset($blog->image) : asset('assets/images/blog/blog6.webp');
+    $ogDesc  = Str::limit(strip_tags($blog->meta_description ?? $blog->excerpt ?? $blog->content), 200);
+    $ogUrl   = route('blog-details', $blog->slug);
+@endphp
+<link rel="canonical" href="{{ $ogUrl }}">
+<meta property="og:site_name" content="Konichiwa Chemicals">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ $blog->title }}">
+<meta property="og:description" content="{{ $ogDesc }}">
+<meta property="og:url" content="{{ $ogUrl }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:alt" content="{{ $blog->title }}">
+<meta property="article:published_time" content="{{ $blog->created_at->toIso8601String() }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $blog->title }}">
+<meta name="twitter:description" content="{{ $ogDesc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+@endpush
 @section('content')
        @include('partials.redesign-breadcrumb', ['pageTitle' => 'Post Details', 'breadcrumbActive' => 'Blog'])
 
@@ -71,7 +90,7 @@
                                     <a class="rd-share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                                     <a class="rd-share-btn" href="https://www.reddit.com/submit?url={{ $shareUrl }}&amp;title={{ $shareTitle }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Reddit" title="Reddit"><i class="fab fa-reddit-alien" aria-hidden="true"></i></a>
                                     <a class="rd-share-btn" href="mailto:?subject={{ $shareTitle }}&amp;body={{ $shareTitle }}%0A{{ $shareUrl }}" aria-label="Share by email" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-                                <button type="button" class="rd-share-btn" data-copy-link="{{ $plainUrl }}" aria-label="Copy link" title="Copy link"><i class="fas fa-link" aria-hidden="true"></i></button>
+                                <!-- <button type="button" class="rd-share-btn" data-copy-link="{{ $plainUrl }}" aria-label="Copy link" title="Copy link"><i class="fas fa-link" aria-hidden="true"></i></button> -->
                                 <span class="rd-share-status" role="status" aria-live="polite"></span>                                      
                                     </div>
                                 </div>
