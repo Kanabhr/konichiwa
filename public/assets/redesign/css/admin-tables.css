@@ -27,3 +27,21 @@ table.rd-dt .badge-premium {
     color: #5D666F;
     font-size: 0.875rem;
 }
+
+/* "Show N" length box: give the arrow room so it no longer overlaps the number */
+.rd-dt-card .dt-container .dt-length label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+.rd-dt-card .dt-container .dt-length select {
+    width: auto;
+    min-width: 80px;
+    height: 38px;
+    margin: 0;
+    padding: 6px 32px 6px 12px;
+    background-image: none;
+    -webkit-appearance: menulist;
+    appearance: menulist;
+}

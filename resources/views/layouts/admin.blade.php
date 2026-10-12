@@ -317,9 +317,8 @@
     <!-- End loader -->
 
     <aside class="admin-sidebar">
-        <div class="sidebar-brand">
-            <img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa">
-            <span class="ms-3 fw-bold fs-5">ADMIN</span>
+        <div class="sidebar-brand" style="display:flex; align-items:center; justify-content:center;">
+            <img src="{{ asset('assets/images/logo/logo10.png') }}" alt="Konichiwa" style="margin:0;">
         </div>
         
         <div class="sidebar-nav">
